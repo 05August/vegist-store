@@ -24,6 +24,7 @@
     "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
     "react-router": "^6.6.1",
+    "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
@@ -38,7 +39,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch ./db/db.json --port 3001"
   },
   "eslintConfig": {
     "extends": [

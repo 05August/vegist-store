@@ -1,5 +1,7 @@
 import React from "react";
 import { HiOutlineChevronDown, HiChevronRight } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { ROUTE } from "../../../constants/Constants";
 
 const navbarData = [
   {
@@ -113,7 +115,7 @@ const renderNavbar = () => {
   return navbarData.map((navItem) => {
     return (
       <li key={navItem.id} className="menu-link">
-        <a className="link-title" href="#">
+        <a className="link-title" href="/">
           {navItem.name}
           {navItem.dropdownData ? <HiOutlineChevronDown /> : ""}
         </a>

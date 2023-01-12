@@ -1,0 +1,198 @@
+@import "../../styles/utilities/variables.scss";
+@import "../../styles/utilities/mixin.scss";
+
+footer {
+  background-color: #faf8ed;
+  padding-top: 80px;
+  .containerFooter {
+    max-width: 1200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+    .ourService {
+      &--content {
+        width: 25%;
+        @include flex(flex-end, center, row-reverse);
+        &:hover {
+          a {
+            &::before {
+              right: -15px;
+              opacity: 1;
+              visibility: visible;
+            }
+            &::after {
+              transform: skew(5deg, 5deg);
+            }
+          }
+        }
+        span {
+          font-size: 15px;
+          width: calc(100% - 115px);
+        }
+        a {
+          position: relative;
+          z-index: 0;
+          margin-right: 15px;
+          line-height: 0;
+          font-size: 30px;
+          color: $white;
+          height: 100px;
+          width: 100px;
+          @include flex(center, center, unset, unset, unset);
+          border-radius: 50%;
+          border: 2px solid $primary-color;
+          svg {
+            position: relative;
+            z-index: 1;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            transition: all 0.2s ease-in-out 0s;
+            right: 0;
+            width: 15px;
+            height: 2px;
+            opacity: 0;
+            visibility: hidden;
+            background-color: $primary-color;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            transition: all 0.2s ease-in-out 0s;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: $primary-color;
+          }
+        }
+      }
+    }
+    .infor {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid #e8e8e8ee;
+      & > div {
+        padding-right: 15px;
+      }
+      .logo {
+        @include flex(flex-end, baseline, column);
+        p {
+          font-size: 13px;
+          margin-top: 8px;
+        }
+      }
+      .address,
+      .contact {
+        display: flex;
+        align-items: center;
+        &--icon {
+          margin-right: 15px;
+          font-size: 40px;
+          color: $primary-color;
+        }
+        &--text {
+          h6 {
+            font-size: 16px;
+            font-weight: 600;
+            color: $primary-color;
+          }
+          span,
+          a {
+            font-size: 13px;
+            margin-top: 5px;
+            display: block;
+          }
+          a:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+    .list {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid #e8e8e8ee;
+      .listItem {
+        &--title {
+          color: $primary-color;
+          font-size: 16px;
+          font-weight: 600;
+        }
+        &--subList {
+          padding-right: 30px;
+          &__li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #7b7b7bee;
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .containerCopyright {
+    background-color: $primary-color;
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .copyright {
+      background-color: $primary-color;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      &--text {
+        color: $white;
+        display: flex;
+        align-items: center;
+        svg {
+          margin: 0 5px;
+        }
+      }
+      &--social {
+        li {
+          display: inline-block;
+          margin-right: 5px;
+          a {
+            color: $primary-color;
+            line-height: 0;
+            width: 30px;
+            height: 30px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+    .scroll {
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      color: $primary-color;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid $primary-color;
+      background-color: transparent;
+      line-height: 0;
+      border-radius: 50px;
+      transform: translateY(50%);
+      font-size: 20px;
+      height: 38px;
+      width: 38px;
+      &:hover {
+        background-color: $primary-color;
+        color: $white;
+      }
+    }
+  }
+}

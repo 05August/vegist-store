@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar/Navbar";
 import logo from "../../assets/img/logo.png";
 import { ShoppingOutlined, HeartOutlined } from "@ant-design/icons";
@@ -12,6 +12,15 @@ import "./header.scss";
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const [open, setOpen] = useState(false);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const showCart = () => {
     setOpen(true);
   };
@@ -19,7 +28,7 @@ const Header = () => {
     setOpen(false);
   };
   return (
-    <header>
+    <header id="header" className={offset > 50 ? "is-sticky" : ""}>
       <section className="header__top">
         <p>
           <span>Free shipping </span>

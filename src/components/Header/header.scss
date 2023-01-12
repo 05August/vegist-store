@@ -2,6 +2,26 @@
 @import "../../styles/utilities/mixin.scss";
 
 header {
+  background-color: $white;
+  width: 100%;
+  &.is-sticky {
+    .header__top {
+      display: none;
+    }
+    position: fixed;
+    z-index: 1000;
+    @include keyframes(smoothScroll) {
+      0% {
+        transform: translateY(-150px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    animation: smoothScroll 1s ease-in-out;
+  }
+  top: 0;
   .header__top {
     height: 40px;
     background-color: $black;
@@ -20,9 +40,10 @@ header {
     }
   }
   .header__main {
-    max-width: 1200px;
     padding: 0 15px;
     margin: 0 auto;
+    background-color: $white;
+    max-width: 1200px;
     &--top {
       padding: 15px 0;
       @include flex(space-between, center);
