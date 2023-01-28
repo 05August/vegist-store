@@ -1,0 +1,46 @@
+@import "../../../styles/utilities/variables.scss";
+@import "../../../styles/utilities/mixin.scss";
+
+.bannerGrid {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  &--container {
+    max-width: 1200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+    &__block {
+      padding-right: 15px;
+      padding-left: 15px;
+      .banner-img {
+        position: relative;
+        overflow: hidden;
+
+        .banner-content {
+          position: absolute;
+          bottom: 50%;
+          width: 50%;
+          transform: translateY(50%);
+          left: 30px;
+          h3 {
+            font-size: 22px;
+            font-weight: 700;
+          }
+          .btn {
+            margin-top: 21px;
+          }
+        }
+        .img-fluid {
+          max-width: 100%;
+          height: auto;
+          transition: all 0.4s ease-in-out;
+        }
+      }
+      &:hover {
+        .img-fluid {
+          scale: 1.1;
+        }
+      }
+    }
+  }
+}

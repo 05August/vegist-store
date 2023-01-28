@@ -7,13 +7,29 @@ import { IoIosClose } from "react-icons/io";
 import { MdOutlineHeadsetMic } from "react-icons/md";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Drawer } from "antd";
+import clientServer from "../../server/clientServer";
+import { useSearchParams } from "react-router-dom";
 import "./header.scss";
 
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const [open, setOpen] = useState(false);
   const [offset, setOffset] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [listProduct, setListProduct] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    clientServer
+      .get("products")
+      .then((res) => {
+        setListProduct(res.data);
+      })
+      .catch((err) => {
+        console.error("error:", err);
+      });
+  }, []);
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener("scroll", onScroll);
@@ -27,6 +43,69 @@ const Header = () => {
   const onClose = () => {
     setOpen(false);
   };
+  const renderSearchResults = () => {
+    return (
+      <ul
+        className="search-results"
+        style={{ display: isActive === true ? "flex" : "none" }}
+      >
+        {searchResults.length === 0 && searchValue ? (
+          <li style={{ borderBottom: "unset" }}>
+            <span className="title">
+              <p>Your search for "{searchValue}" did not yield any results.</p>
+            </span>
+          </li>
+        ) : (
+          searchResults.map((item, index) => {
+            if (index < 10) {
+              return (
+                <li key={`${item.name}--${item.id}`}>
+                  <a href="#">
+                    <div className="thumbnail">
+                      <img src={item.img} />
+                    </div>
+                    <div className="text-content">
+                      <h6>{item.name}</h6>
+                      <div className="price-box">
+                        <span className="new-price">
+                          {item.newPrice.toLocaleString("vi", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </span>
+                        {item.oldPrice ? (
+                          <span className="old-price">
+                            {item.oldPrice.toLocaleString("vi", {
+                              style: "currency",
+                              currency: "VND",
+                            })}
+                          </span>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              );
+            }
+            if (index === 10) {
+              return (
+                <li
+                  key={`key--${searchResults.length}`}
+                  style={{ borderBottom: "unset" }}
+                >
+                  <span className="title">
+                    <a href="#">See all results ({searchResults.length - 10})</a>
+                  </span>
+                </li>
+              );
+            }
+          })
+        )}
+      </ul>
+    );
+  };
   return (
     <header id="header" className={offset > 50 ? "is-sticky" : ""}>
       <section className="header__top">
@@ -38,21 +117,48 @@ const Header = () => {
       <section className="header__main">
         <div className="header__main--top">
           <div className="header--element logo">
-            <img src={logo} alt="vegist"></img>
+            <a href="#">
+              <img src={logo} alt="vegist"></img>
+            </a>
           </div>
           <div className="header--element search">
-            <form action="/search" onSubmit={() => {}}>
+            <form
+              action="/search"
+              onSubmit={(e) => {
+                e.preventDefault();
+                searchParams.set("keyword", searchValue.trim().toLowerCase());
+                setSearchParams(searchParams);
+              }}
+            >
               <input
                 value={searchValue}
                 onChange={(e) => {
                   setSearchValue(e.target.value);
+                  const fillProduct = listProduct.filter((item) =>
+                    item.name.toLowerCase().includes(e.target.value || "")
+                  );
+                  setSearchResults(fillProduct);
+                }}
+                onFocus={() => {
+                  setIsActive(true);
+                }}
+                onBlur={() => {
+                  setIsActive(false);
                 }}
                 placeholder="Search our store"
+                required
               />
-              <button type="submit">
+              <button
+                type="submit"
+                onClick={() => {
+                  searchParams.set("keyword", searchValue.trim().toLowerCase());
+                  setSearchParams(searchParams);
+                }}
+              >
                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
               </button>
             </form>
+            {renderSearchResults()}
           </div>
           <div className="header--element shop-element">
             <div className="acc">

@@ -1,11 +1,10 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Header from "./components/Header/Header.jsx";
-import Slider from "./components/Slider/Slider.jsx";
-import DefaultLayout from "./layouts/DefaultLayout.jsx";
 
 import { ROUTE } from "./constants/Constants";
+import HomePageUser from "./pages/User/HomePageUser.jsx";
+import Home from "./components/HomeBody/Home";
+import { Empty } from "antd";
 import "./styles/style.scss";
-import Home from "./pages/User/Home.jsx";
 function App() {
   return (
     <div className="App">
@@ -23,12 +22,12 @@ function App() {
                 width: 475,
               }}
             >
-              404 NOT FOUND
+              <Empty />
             </Link>
           }
         />
-        <Route path={ROUTE.HOME} element={<Home />}>
-          <Route index element={<Slider />} />
+        <Route path={ROUTE.HOME} element={<HomePageUser />}>
+          <Route index element={<Home />} />
         </Route>
       </Routes>
     </div>

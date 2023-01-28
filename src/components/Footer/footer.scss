@@ -3,17 +3,17 @@
 
 footer {
   background-color: #faf8ed;
-  padding-top: 80px;
+
   .containerFooter {
     max-width: 1200px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 80px 15px 0px 15px;
     margin: 0 auto;
     .ourService {
       &--content {
         width: 25%;
         @include flex(flex-end, center, row-reverse);
         &:hover {
+          color: $primary-color;
           a {
             &::before {
               right: -15px;
@@ -127,6 +127,9 @@ footer {
             &:last-child {
               border-bottom: none;
             }
+            &:hover{
+              color: $primary-color;
+            }
           }
         }
       }
@@ -142,21 +145,29 @@ footer {
       background-color: $primary-color;
       padding-top: 15px;
       padding-bottom: 15px;
-      width: 90%;
+      width: 80%;
       display: flex;
       justify-content: space-between;
       &--text {
         color: $white;
         display: flex;
         align-items: center;
+        font-size: 13px;
+        flex: 1;
+
         svg {
-          margin: 0 5px;
+          margin: 0 3px;
         }
       }
       &--social {
+        flex: 1;
+        text-align: center;
         li {
           display: inline-block;
           margin-right: 5px;
+          &:last-child {
+            margin-right: 0;
+          }
           a {
             color: $primary-color;
             line-height: 0;
@@ -170,6 +181,10 @@ footer {
             background-color: #fff;
           }
         }
+      }
+      &--payment {
+        flex: 1;
+        text-align: right;
       }
     }
     .scroll {

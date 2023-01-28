@@ -1,8 +1,8 @@
 import React from "react";
 import { Carousel } from "antd";
-import slider1 from "../../assets/img/slider1-min.webp";
-import slider2 from "../../assets/img/slider2.webp";
-import slider3 from "../../assets/img/slider3_7f623fd1-a932-4b5c-92c7-292044869712.webp";
+import slider1 from "../../../assets/img/slider1-min.webp";
+import slider2 from "../../../assets/img/slider2.webp";
+import slider3 from "../../../assets/img/slider3_7f623fd1-a932-4b5c-92c7-292044869712.webp";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
 import "./slider.scss";
 const carouselRef = React.createRef();
