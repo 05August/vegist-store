@@ -3,86 +3,86 @@
     {
       "id": 1,
       "name": "Baker's Rack",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat10.jpg?v=1595858914 ",
-      "description": "Adipisicing est ea et ipsum tempor incididunt elit id veniam quis magna."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat1.jpg?v=1613778268",
+      "description": "Adipisicing est ea et ipsum tempor incididunt elit id veniam quis magna.",
+      "count": 14
     },
     {
       "id": 2,
       "name": "Breakfast",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/banner27.jpg?v=1610199416 ",
-      "description": "Magna esse ex aute magna ut quis deserunt exercitation commodo nisi labore."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat2.jpg?v=1613778269",
+      "description": "Magna esse ex aute magna ut quis deserunt exercitation commodo nisi labore.",
+      "count": 10
     },
     {
       "id": 3,
       "name": "Dairy & Chesse",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat6.jpg?v=1592896212 ",
-      "description": "Sunt deserunt cillum ex irure."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat3.jpg?v=1613778269",
+      "description": "Sunt deserunt cillum ex irure.",
+      "count": 11
     },
     {
       "id": 4,
       "name": "Dinner",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/banner29.jpg?v=1610200554 ",
-      "description": "Proident aliqua excepteur voluptate reprehenderit eiusmod reprehenderit dolor elit esse elit in. Deserunt aliqua amet nulla eu. Do esse nulla aute sit."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat4.jpg?v=1613778269",
+      "description": "Proident aliqua excepteur voluptate reprehenderit eiusmod reprehenderit dolor elit esse elit in. Deserunt aliqua amet nulla eu. Do esse nulla aute sit.",
+      "count": 5
     },
     {
       "id": 5,
       "name": "Dairy & Chesse",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat11.jpg?v=1595858994 ",
-      "description": "Elit exercitation proident esse eu fugiat nostrud exercitation consequat aute sint proident."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat5.jpg?v=1613778270",
+      "description": "Elit exercitation proident esse eu fugiat nostrud exercitation consequat aute sint proident.",
+      "count": 2
     },
     {
       "id": 6,
       "name": "Featured Product",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/banner5_19e6fd2c-70b2-459d-b4d5-d7680262856a.jpg?v=1595936691 ",
-      "description": "Ad quis do sint culpa non in non."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat6.jpg?v=1613778270",
+      "description": "Ad quis do sint culpa non in non.",
+      "count": 2
     },
     {
       "id": 7,
       "name": "Fresh Fruits",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat4.jpg?v=1592896212 ",
-      "description": "Pariatur voluptate anim dolor occaecat velit laboris culpa pariatur laboris in labore minim irure in."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat7.jpg?v=1613778270",
+      "description": "Pariatur voluptate anim dolor occaecat velit laboris culpa pariatur laboris in labore minim irure in.",
+      "count": 1
     },
     {
       "id": 8,
       "name": "Fresh Meat",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat5.jpg?v=1592896207 ",
-      "description": "Ea sit in qui dolor voluptate sunt officia."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat8.jpg?v=1592896145",
+      "description": "Ea sit in qui dolor voluptate sunt officia.",
+      "count": 1
     },
     {
       "id": 9,
       "name": "Fresh Vegetable",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat8.jpg?v=1592896145 ",
-      "description": "Exercitation laborum nisi reprehenderit Lorem reprehenderit sit."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat9.jpg?v=1592896206",
+      "description": "Exercitation laborum nisi reprehenderit Lorem reprehenderit sit.",
+      "count": 1
     },
     {
       "id": 10,
       "name": "Green Seafood",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat9.jpg?v=1592896206 ",
-      "description": "Magna in est reprehenderit laborum fugiat exercitation sit est velit adipisicing sunt."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat8.jpg?v=1613778270",
+      "description": "Magna in est reprehenderit laborum fugiat exercitation sit est velit adipisicing sunt.",
+      "count": 1
     },
     {
       "id": 11,
       "name": "New Product",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat2_d3ac7e6d-390d-4ddd-b12a-73f7313576b4.jpg?v=1595936679 ",
-      "description": "Do consectetur aliqua consequat adipisicing ullamco magna mollit qui in aliquip."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat11.jpg?v=1595858994",
+      "description": "Do consectetur aliqua consequat adipisicing ullamco magna mollit qui in aliquip.",
+      "count": 1
     },
     {
       "id": 12,
       "name": "Sea & Fish",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat1.jpg?v=1592897066 ",
-      "description": "Consequat nulla Lorem deserunt est tempor aliqua in in officia minim commodo."
-    },
-    {
-      "id": 13,
-      "name": "Organic Juice",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat7.jpg?v=1592896147",
-      "description": "Occaecat nulla cupidatat aliqua anim irure laboris adipisicing adipisicing adipisicing mollit dolor est anim consectetur."
-    },
-    {
-      "id": 14,
-      "name": "Organic Dryfruit",
-      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/collections/cat3.jpg?v=1592896213",
-      "description": "Quis laborum nostrud sint laborum aliqua nostrud ad mollit mollit occaecat laborum in anim."
+      "img": "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/cat9.jpg?v=1613778270",
+      "description": "Consequat nulla Lorem deserunt est tempor aliqua in in officia minim commodo.",
+      "count": 1
     }
   ],
   "tags": [
@@ -811,7 +811,7 @@
     },
     {
       "id": 50,
-      "categoryId": 13,
+      "categoryId": 12,
       "name": " Chilly Garlic Bread",
       "img": [
         "https://cdn.shopify.com/s/files/1/0412/8151/9765/products/4_e3af2cd6-0f26-42a3-8071-42cae821c669_590X668_crop_center.jpg?v=1620644020 ",

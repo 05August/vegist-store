@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Drawer } from "antd";
 import clientServer from "../../server/clientServer";
 import { useSearchParams } from "react-router-dom";
+import { MAX_SEARCH_RESULT_ITEM } from "../../constants/Constants";
 import "./header.scss";
 
 const Header = () => {
@@ -47,7 +48,13 @@ const Header = () => {
     return (
       <ul
         className="search-results"
-        style={{ display: isActive === true ? "flex" : "none" }}
+        style={{
+          display: isActive === true ? "flex" : "none",
+          padding:
+            searchValue.length === 0 && searchResults.length === 0
+              ? "0px"
+              : "15px 15px 0 0",
+        }}
       >
         {searchResults.length === 0 && searchValue ? (
           <li style={{ borderBottom: "unset" }}>
@@ -57,7 +64,7 @@ const Header = () => {
           </li>
         ) : (
           searchResults.map((item, index) => {
-            if (index < 10) {
+            if (index < MAX_SEARCH_RESULT_ITEM) {
               return (
                 <li key={`${item.name}--${item.id}`}>
                   <a href="#">
@@ -89,7 +96,7 @@ const Header = () => {
                 </li>
               );
             }
-            if (index === 10) {
+            if (index === MAX_SEARCH_RESULT_ITEM) {
               return (
                 <li
                   key={`key--${searchResults.length}`}

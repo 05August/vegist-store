@@ -1,8 +1,8 @@
 import { Routes, Route, Link } from "react-router-dom";
 
 import { ROUTE } from "./constants/Constants";
-import HomePageUser from "./pages/User/HomePageUser.jsx";
-import Home from "./components/HomeBody/Home";
+import DefaultLayout from "./layouts/DefaultLayout";
+import HomeBody from "./pages/User/Home/Home.jsx";
 import { Empty } from "antd";
 import "./styles/style.scss";
 function App() {
@@ -26,8 +26,12 @@ function App() {
             </Link>
           }
         />
-        <Route path={ROUTE.HOME} element={<HomePageUser />}>
-          <Route index element={<Home />} />
+        <Route path={ROUTE.HOME} element={<DefaultLayout />}>
+          <Route index element={<HomeBody />} />
+          <Route path={ROUTE.ACCOUNT} element={<></>} />
+
+          <Route path={ROUTE.LOGIN} element={<h1>Login</h1>} />
+          <Route path={ROUTE.REGISTER} element={<h1>Register</h1>} />
         </Route>
       </Routes>
     </div>
