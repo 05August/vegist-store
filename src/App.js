@@ -28,10 +28,11 @@ function App() {
         />
         <Route path={ROUTE.HOME} element={<DefaultLayout />}>
           <Route index element={<HomeBody />} />
-          <Route path={ROUTE.ACCOUNT} element={<></>} />
-
+          <Route path={ROUTE.ACCOUNT} element={<Empty />} />
           <Route path={ROUTE.LOGIN} element={<h1>Login</h1>} />
           <Route path={ROUTE.REGISTER} element={<h1>Register</h1>} />
+          <Route path={ROUTE.PRODUCT} element={<h1>PRODUCT</h1>} />
+          <Route path={ROUTE.PRODUCT_DETAIL} element={<h1>PRODUCT_DETAIL</h1>} />
         </Route>
       </Routes>
     </div>

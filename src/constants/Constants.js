@@ -2,6 +2,8 @@ export const ROUTE = {
   HOME: "/",
   NOT_FOUND: "*",
   ACCOUNT: "/account",
+  PRODUCT: "/product",
+  PRODUCT_DETAIL: "/product/:idProDuct",
   LOGIN: "/account/login",
   REGISTER: "/account/register",
 };

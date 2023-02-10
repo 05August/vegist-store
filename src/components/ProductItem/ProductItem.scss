@@ -1,0 +1,76 @@
+@import "../../styles/utilities/variables.scss";
+@import "../../styles/utilities/mixin.scss";
+.product--item {
+  padding: 0 15px;
+
+  &__img {
+    position: relative;
+    &:hover {
+      .img--after {
+        opacity: 1 !important;
+      }
+    }
+    .product--img {
+      .img--fruit {
+        height: 340px;
+        width: 300px;
+        @include transition-ease-in-out(0.4s);
+      }
+
+      .img--before {
+        backface-visibility: hidden;
+      }
+
+      .img--after {
+        backface-visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .product--discount {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #e30514;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 20% 50%);
+      font-size: 13px;
+      padding: 2px 5px 2px 15px;
+      color: #fff;
+    }
+  }
+
+  &__content {
+    margin-top: 30px;
+
+    a {
+      font-size: 14px;
+      font-weight: 500;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .product-rating {
+      margin-top: 10px;
+    }
+
+    .product-price {
+      margin-top: 8px;
+
+      .new-price {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-secondary);
+      }
+
+      .old-price {
+        font-size: 16px;
+        text-decoration: line-through;
+        padding-left: 5px;
+      }
+    }
+  }
+}

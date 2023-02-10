@@ -43,7 +43,7 @@ const Footer = () => {
         "Payment policy",
         "Privacy policy",
         "Return policy",
-        " shipping policy",
+        "Shipping policy",
         "Terms & Conditions",
       ],
     },

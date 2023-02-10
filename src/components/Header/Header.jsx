@@ -6,10 +6,12 @@ import { AiOutlineUser } from "react-icons/ai";
 import { IoIosClose } from "react-icons/io";
 import { MdOutlineHeadsetMic } from "react-icons/md";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
 import clientServer from "../../server/clientServer";
 import { useSearchParams } from "react-router-dom";
 import { MAX_SEARCH_RESULT_ITEM } from "../../constants/Constants";
+import { convertPriceToVnd } from "../../until/convertPrice.js";
+import { ROUTE } from "../../constants/Constants";
 import "./header.scss";
 
 const Header = () => {
@@ -23,7 +25,7 @@ const Header = () => {
 
   useEffect(() => {
     clientServer
-      .get("products")
+      .get("productDetail")
       .then((res) => {
         setListProduct(res.data);
       })
@@ -75,17 +77,11 @@ const Header = () => {
                       <h6>{item.name}</h6>
                       <div className="price-box">
                         <span className="new-price">
-                          {item.newPrice.toLocaleString("vi", {
-                            style: "currency",
-                            currency: "VND",
-                          })}
+                          {convertPriceToVnd(item.newPrice)}
                         </span>
                         {item.oldPrice ? (
                           <span className="old-price">
-                            {item.oldPrice.toLocaleString("vi", {
-                              style: "currency",
-                              currency: "VND",
-                            })}
+                            {convertPriceToVnd(item.oldPrice)}
                           </span>
                         ) : (
                           <></>
@@ -171,21 +167,21 @@ const Header = () => {
             <div className="acc">
               <AiOutlineUser />
               <div className="acc--container">
-                <a href="#">Account</a>
+                <a href={ROUTE.ACCOUNT}>Account</a>
                 <div className="acc--lo">
-                  <a href="#">Register</a>
-                  <a href="#">Login</a>
+                  <a href={ROUTE.REGISTER}>Register</a>
+                  <a href={ROUTE.LOGIN}>Login</a>
                 </div>
               </div>
             </div>
             <div className="wishlist">
-              <a href="#">
+              <a className="wishlist-icon" href="/home/wishlist">
                 <HeartOutlined />
                 <span className="wishlist-counter">0</span>
               </a>
             </div>
             <div className="cart">
-              <a href="#" onClick={showCart}>
+              <a className="cart-icon" onClick={showCart}>
                 <ShoppingOutlined />
                 <span id="cart-total" className="bigcounter">
                   0
@@ -195,7 +191,7 @@ const Header = () => {
                 placement="right"
                 onClose={onClose}
                 open={open}
-                closeIcon={<IoIosClose font-size="30px" />}
+                closeIcon={<IoIosClose fontSize="30px" />}
                 headerStyle={{ border: "none", padding: "10px 10px 0px 10px" }}
                 bodyStyle={{ paddingTop: "0px" }}
               >

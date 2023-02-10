@@ -8,6 +8,7 @@ import {
   AiOutlineLeft,
   AiOutlineRight,
 } from "react-icons/ai";
+import ProductItem from "../../../../components/ProductItem/ProductItem";
 const carouselRef = React.createRef();
 
 const buttonShopNow = (href) => (
@@ -98,9 +99,37 @@ const renderSlideCategory = (dataCategory, sliderRef) => {
   );
 };
 
+const renderSlideProduct = (dataProductsTrending, sliderProductRef) => {
+  const settings = {
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 300,
+    autoplaySpeed: 3000,
+    cssEase: "linear",
+    arrows: false,
+    centerPadding: "5px",
+  };
+
+  return (
+    <>
+      <Slider {...settings} ref={sliderProductRef}>
+        {dataProductsTrending.map((item) => {
+          return (
+            <div className="product--item" key={`${item.id}--${item.idCategory}`}>
+              <ProductItem data={item} />
+            </div>
+          );
+        })}
+      </Slider>
+    </>
+  );
+};
+
 const Slide = ({ type, data }) => {
   const sliderRef = useRef();
-
+  const sliderProductRef = useRef();
   const [isActive, setActive] = useState(true);
   useEffect(() => {
     setActive(false);
@@ -111,12 +140,12 @@ const Slide = ({ type, data }) => {
     case "slide-category":
       return (
         <>
-          <section className="category">
-            <div className="category--container">
-              <div className="category--title">
+          <div className="category">
+            <div className="container">
+              <div className="section--title">
                 <h2>Shop by category</h2>
               </div>
-              <div className="category--slide">
+              <div className="section--slide">
                 {buttonArrow("prev", () => {
                   sliderRef.current.slickPrev();
                 })}
@@ -126,8 +155,19 @@ const Slide = ({ type, data }) => {
                 })}
               </div>
             </div>
-          </section>
+          </div>
         </>
+      );
+    case "slide-product-trending":
+      return (
+        <div className="container">
+          <div className="section--title">
+            <h2>Trending Products</h2>
+          </div>
+          <div className="section--slide">
+            {renderSlideProduct(data, sliderProductRef)}
+          </div>
+        </div>
       );
     default:
       return <></>;

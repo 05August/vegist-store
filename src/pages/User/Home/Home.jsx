@@ -7,11 +7,30 @@ import { SLIDE_DATA } from "../../../constants/Constants";
 import "./home.scss";
 const HomeBody = () => {
   const [dataCategory, setDataCategory] = useState([]);
+  const [dataProduct, setDataProduct] = useState([]);
+  const [dataTrendingProduct, setDataTrendingProduct] = useState([]);
+
   useEffect(() => {
     clientServer
       .get("Category")
       .then((res) => {
         setDataCategory(res.data);
+      })
+      .catch((err) => {
+        console.error("error:", err);
+      });
+    clientServer
+      .get("trendingProducts")
+      .then((res) => {
+        setDataTrendingProduct(res.data);
+      })
+      .catch((err) => {
+        console.error("error:", err);
+      });
+    clientServer
+      .get("productDetail")
+      .then((res) => {
+        setDataProduct(res.data);
       })
       .catch((err) => {
         console.error("error:", err);
@@ -62,6 +81,9 @@ const HomeBody = () => {
       </section>
       <section className="slide-category">
         <Slide type="slide-category" data={dataCategory} />
+      </section>
+      <section className="slide-product-trending">
+        <Slide type="slide-product-trending" data={dataTrendingProduct} />
       </section>
     </>
   );
