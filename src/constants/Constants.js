@@ -3,7 +3,7 @@ export const ROUTE = {
   NOT_FOUND: "*",
   ACCOUNT: "/home/account",
   PRODUCT: "/home/product",
-  PRODUCT_DETAIL: "/home/product/:idProDuct",
+  PRODUCT_DETAIL: "/home/product/:productId",
   LOGIN: "/home/account/login",
   REGISTER: "/home/account/register",
   WISHLIST: "/home/wishlist",

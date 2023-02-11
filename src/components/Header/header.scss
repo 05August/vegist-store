@@ -245,9 +245,11 @@ header {
       .main-menu {
         @include flex-align-center(center, wrap, 0);
         .menu-link {
-          a {
+          a,
+          .link-title {
             &:hover {
               color: $primary-color;
+              cursor: pointer;
             }
           }
           &:hover {

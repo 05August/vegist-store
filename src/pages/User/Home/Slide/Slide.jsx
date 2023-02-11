@@ -10,12 +10,13 @@ import {
   AiOutlineRight,
 } from "react-icons/ai";
 import ProductItem from "../../../../components/ProductItem/ProductItem";
+import { Link } from "react-router-dom";
 const carouselRef = React.createRef();
 
 const buttonShopNow = (href) => (
-  <a href={href} className="btn btn-style1">
+  <Link to={href} className="btn btn-style1">
     Shop now
-  </a>
+  </Link>
 );
 
 const buttonArrow = (arrowClassName, handleOnclick) => {
@@ -45,9 +46,9 @@ const renderSlideShow = (isActive, data) => {
               className={isActive ? "isActive slider-image" : "slider-image"}
               key={`item.position--${index}`}
             >
-              <a href={ROUTE.PRODUCT}>
+              <Link to={ROUTE.PRODUCT}>
                 <img src={item.img} alt="img" />
-              </a>
+              </Link>
               <div className={`slider-text-info slider-text-${item.position}`}>
                 <span>{item.thumbnail}</span>
 
@@ -55,7 +56,7 @@ const renderSlideShow = (isActive, data) => {
                   {item.title[0]} <br /> {item.title[1]}
                 </h1>
 
-                <div>{buttonShopNow("#")}</div>
+                <div>{buttonShopNow(ROUTE.PRODUCT)}</div>
               </div>
             </div>
           );
