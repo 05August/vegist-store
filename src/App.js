@@ -1,11 +1,11 @@
-import { Routes, Route, Link } from "react-router-dom";
-
+import { Routes, Route, Link, useSearchParams } from "react-router-dom";
 import { ROUTE } from "./constants/Constants";
 import DefaultLayout from "./layouts/DefaultLayout";
 import HomeBody from "./pages/User/Home/Home.jsx";
 import { Empty } from "antd";
 import "./styles/style.scss";
 function App() {
+  const [searchParams] = useSearchParams();
   return (
     <div className="App">
       <Routes>
@@ -28,11 +28,66 @@ function App() {
         />
         <Route path={ROUTE.HOME} element={<DefaultLayout />}>
           <Route index element={<HomeBody />} />
-          <Route path={ROUTE.ACCOUNT} element={<Empty />} />
-          <Route path={ROUTE.LOGIN} element={<h1>Login</h1>} />
-          <Route path={ROUTE.REGISTER} element={<h1>Register</h1>} />
-          <Route path={ROUTE.PRODUCT} element={<h1>PRODUCT</h1>} />
-          <Route path={ROUTE.PRODUCT_DETAIL} element={<h1>PRODUCT_DETAIL</h1>} />
+          <Route
+            path={ROUTE.ACCOUNT}
+            element={
+              <div
+                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
+              >
+                <h1>Account Coming Soon...</h1>
+              </div>
+            }
+          />
+          <Route
+            path={ROUTE.LOGIN}
+            element={
+              <div
+                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
+              >
+                <h1>Login Coming Soon...</h1>
+              </div>
+            }
+          />
+          <Route
+            path={ROUTE.REGISTER}
+            element={
+              <div
+                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
+              >
+                <h1>Register Coming Soon...</h1>
+              </div>
+            }
+          />
+          <Route
+            path={ROUTE.PRODUCT}
+            element={
+              <div
+                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
+              >
+                <h1>Product Coming Soon...</h1>
+              </div>
+            }
+          />
+          <Route
+            path={ROUTE.WISHLIST}
+            element={
+              <div
+                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
+              >
+                <h1>Wish List Coming Soon...</h1>
+              </div>
+            }
+          />
+          <Route
+            path={ROUTE.PRODUCT_DETAIL}
+            element={
+              <div
+                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
+              >
+                <h1>Product Detail Coming Soon...</h1>
+              </div>
+            }
+          />
         </Route>
       </Routes>
     </div>

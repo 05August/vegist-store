@@ -106,8 +106,10 @@ header {
             position: relative;
             overflow: hidden;
             .title {
+              display: inline-block;
               &:hover {
                 color: $primary-color;
+                cursor: pointer;
               }
             }
             a {

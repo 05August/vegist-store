@@ -1,41 +1,23 @@
+import { useDispatch, useSelector } from "react-redux";
 import Slide from "./Slide/Slide.jsx";
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
-import clientServer from "../../../server/clientServer";
-
-import { SLIDE_DATA } from "../../../constants/Constants";
+import { getCategory } from "../../../redux/category.slice.js";
+import { getTrendingProducts } from "../../../redux/trendingProducts.slice.js";
+import { SLIDE_DATA, ROUTE } from "../../../constants/Constants";
 import "./home.scss";
 const HomeBody = () => {
-  const [dataCategory, setDataCategory] = useState([]);
-  const [dataProduct, setDataProduct] = useState([]);
-  const [dataTrendingProduct, setDataTrendingProduct] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    clientServer
-      .get("Category")
-      .then((res) => {
-        setDataCategory(res.data);
-      })
-      .catch((err) => {
-        console.error("error:", err);
-      });
-    clientServer
-      .get("trendingProducts")
-      .then((res) => {
-        setDataTrendingProduct(res.data);
-      })
-      .catch((err) => {
-        console.error("error:", err);
-      });
-    clientServer
-      .get("productDetail")
-      .then((res) => {
-        setDataProduct(res.data);
-      })
-      .catch((err) => {
-        console.error("error:", err);
-      });
+    dispatch(getCategory());
+    dispatch(getTrendingProducts());
   }, []);
+  const categoryData = useSelector((state) => {
+    return state.category.data;
+  });
+  const trendingProductsData = useSelector((state) => {
+    return state.trendingProducts.data;
+  });
   return (
     <>
       <section className="slide-show">
@@ -51,12 +33,15 @@ const HomeBody = () => {
                     className="img-fluid"
                     src="//cdn.shopify.com/s/files/1/0412/8151/9765/files/banner-3.jpg?v=1671689630"
                     loading="lazy"
+                    alt="img"
                   />
                 </a>
                 <div className="banner-content">
                   <h3>Fresh fruit,vegetable on our product</h3>
 
-                  <a className="btn btn-style1">Shop now</a>
+                  <a href={ROUTE.PRODUCT} className="btn btn-style1">
+                    Shop now
+                  </a>
                 </div>
               </div>
             </Col>
@@ -67,12 +52,15 @@ const HomeBody = () => {
                     className="img-fluid"
                     src="//cdn.shopify.com/s/files/1/0412/8151/9765/files/banner-1.jpg?v=1671871955"
                     loading="lazy"
+                    alt="img"
                   />
                 </a>
                 <div className="banner-content">
                   <h3>Vegetable eggplant 100% fresh food</h3>
 
-                  <a className="btn btn-style1">Shop now</a>
+                  <a href={ROUTE.PRODUCT} className="btn btn-style1">
+                    Shop now
+                  </a>
                 </div>
               </div>
             </Col>
@@ -80,10 +68,10 @@ const HomeBody = () => {
         </div>
       </section>
       <section className="slide-category">
-        <Slide type="slide-category" data={dataCategory} />
+        <Slide type="slide-category" data={categoryData} />
       </section>
       <section className="slide-product-trending">
-        <Slide type="slide-product-trending" data={dataTrendingProduct} />
+        <Slide type="slide-product-trending" data={trendingProductsData} />
       </section>
     </>
   );

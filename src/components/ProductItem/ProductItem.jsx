@@ -1,4 +1,6 @@
 import { Rate } from "antd";
+import { Link } from "react-router-dom";
+import { ROUTE } from "../../constants/Constants";
 import { convertPriceToVnd } from "../../until/convertPrice";
 import "./ProductItem.scss";
 
@@ -10,10 +12,10 @@ const ProductItem = ({ data }) => {
   return data ? (
     <>
       <div className="product--item__img">
-        <a className="product--img" href="#">
+        <Link className="product--img" to={`${ROUTE.PRODUCT}/${data.idProduct}`}>
           <img className="img--fruit img--before" src={data.img[0]} alt="Ảnh trái cây" />
           <img className="img--fruit img--after" src={data.img[1]} alt="Ảnh trái cây" />
-        </a>
+        </Link>
         {data.oldPrice ? (
           <div className="product--discount">
             -{discount(data.newPrice, data.oldPrice)}%

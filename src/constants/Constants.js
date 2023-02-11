@@ -1,11 +1,12 @@
 export const ROUTE = {
   HOME: "/",
   NOT_FOUND: "*",
-  ACCOUNT: "/account",
-  PRODUCT: "/product",
-  PRODUCT_DETAIL: "/product/:idProDuct",
-  LOGIN: "/account/login",
-  REGISTER: "/account/register",
+  ACCOUNT: "/home/account",
+  PRODUCT: "/home/product",
+  PRODUCT_DETAIL: "/home/product/:idProDuct",
+  LOGIN: "/home/account/login",
+  REGISTER: "/home/account/register",
+  WISHLIST: "/home/wishlist",
 };
 
 export const MAX_SEARCH_RESULT_ITEM = 10;
@@ -40,7 +41,7 @@ export const NAVBAR_DATA = [
   {
     id: 2,
     name: "Shop",
-    path: "/shop",
+    path: ROUTE.PRODUCT,
     dropdownData: [
       {
         id: 1,
@@ -91,7 +92,7 @@ export const NAVBAR_DATA = [
   {
     id: 3,
     name: "Collection",
-    path: "/collection",
+    path: ROUTE.PRODUCT,
     dropdownData: [
       {
         id: 1,
@@ -129,12 +130,12 @@ export const NAVBAR_DATA = [
   {
     id: 7,
     name: "Login",
-    path: "/login",
+    path: ROUTE.LOGIN,
   },
 
   {
     id: 8,
     name: "Register",
-    path: "/register",
+    path: ROUTE.REGISTER,
   },
 ];

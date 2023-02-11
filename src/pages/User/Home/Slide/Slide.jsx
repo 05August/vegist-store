@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import clientServer from "../../../../server/clientServer";
+import { ROUTE } from "../../../../constants/Constants";
 import { Carousel, Row, Col } from "antd";
 import {
   AiOutlineDoubleLeft,
@@ -44,8 +45,8 @@ const renderSlideShow = (isActive, data) => {
               className={isActive ? "isActive slider-image" : "slider-image"}
               key={`item.position--${index}`}
             >
-              <a href="#">
-                <img src={item.img} />
+              <a href={ROUTE.PRODUCT}>
+                <img src={item.img} alt="img" />
               </a>
               <div className={`slider-text-info slider-text-${item.position}`}>
                 <span>{item.thumbnail}</span>
@@ -67,7 +68,7 @@ const renderSlideShow = (isActive, data) => {
   );
 };
 
-const renderSlideCategory = (dataCategory, sliderRef) => {
+const renderSlideCategory = (categoryData, sliderRef) => {
   const settings = {
     infinite: true,
     slidesToShow: 6,
@@ -83,10 +84,10 @@ const renderSlideCategory = (dataCategory, sliderRef) => {
   return (
     <>
       <Slider {...settings} ref={sliderRef}>
-        {dataCategory.map((item) => {
+        {categoryData.map((item) => {
           return (
             <div className="category-image" key={`${item.name}--${item.id}`}>
-              <a href="#">
+              <a href={ROUTE.PRODUCT}>
                 <img src={item.img} alt={item.name} loading="lazy" />
                 <span className="category-title">{item.name}</span>
               </a>
@@ -105,7 +106,7 @@ const renderSlideProduct = (dataProductsTrending, sliderProductRef) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 300,
+    speed: 200,
     autoplaySpeed: 3000,
     cssEase: "linear",
     arrows: false,

@@ -8,10 +8,10 @@ const renderNavbar = () => {
   return NAVBAR_DATA.map((navItem) => {
     return (
       <li key={navItem.id} className="menu-link">
-        <a className="link-title" href="/">
+        <Link className="link-title" to={navItem.path}>
           {navItem.name}
           {navItem.dropdownData ? <HiOutlineChevronDown /> : ""}
-        </a>
+        </Link>
 
         {navItem.dropdownData ? (
           <ul className="dropdown-menu">
@@ -24,14 +24,16 @@ const renderNavbar = () => {
                   {dropdowmItem.img ? (
                     <>
                       {" "}
-                      <a className="banner">
+                      <a href={ROUTE.PRODUCT} className="banner">
                         <img src={dropdowmItem.img} loading="lazy" />
                       </a>
-                      <a className="title">{dropdowmItem.name}</a>
+                      <a href={ROUTE.PRODUCT} className="title">
+                        {dropdowmItem.name}
+                      </a>
                     </>
                   ) : (
                     <>
-                      <a href="#">
+                      <a href={ROUTE.PRODUCT}>
                         <h2 className="sublink-title">{dropdowmItem.name}</h2>
                       </a>
                       <ul className="dropdown-supmenu">
@@ -41,7 +43,7 @@ const renderNavbar = () => {
                               key={`${navItem.name}--${dropdowmItem.id}--${data}`}
                               className="dropdown-menu-li"
                             >
-                              <a href="#" className="sublink-title">
+                              <a href={ROUTE.PRODUCT} className="sublink-title">
                                 {data}
                               </a>
                             </li>

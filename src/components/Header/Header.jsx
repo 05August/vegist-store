@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar/Navbar";
 import logo from "../../assets/img/logo.png";
 import { ShoppingOutlined, HeartOutlined } from "@ant-design/icons";
@@ -7,45 +8,42 @@ import { IoIosClose } from "react-icons/io";
 import { MdOutlineHeadsetMic } from "react-icons/md";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Drawer } from "antd";
-import clientServer from "../../server/clientServer";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { MAX_SEARCH_RESULT_ITEM } from "../../constants/Constants";
 import { convertPriceToVnd } from "../../until/convertPrice.js";
+import { getProductsDetail } from "../../redux/productsDetail.slice";
 import { ROUTE } from "../../constants/Constants";
 import "./header.scss";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
   const [open, setOpen] = useState(false);
   const [offset, setOffset] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [listProduct, setListProduct] = useState([]);
+  const [isHover, setIsHover] = useState(false);
+
   const [searchResults, setSearchResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    clientServer
-      .get("productDetail")
-      .then((res) => {
-        setListProduct(res.data);
-      })
-      .catch((err) => {
-        console.error("error:", err);
-      });
-  }, []);
-  useEffect(() => {
+    dispatch(getProductsDetail());
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
+  const navigate = useNavigate();
+  const listProduct = useSelector((state) => {
+    return state.productsDetail.data;
+  });
   const showCart = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
   };
+
   const renderSearchResults = () => {
     return (
       <ul
@@ -56,6 +54,12 @@ const Header = () => {
             searchValue.length === 0 && searchResults.length === 0
               ? "0px"
               : "15px 15px 0 0",
+        }}
+        onMouseOver={() => {
+          setIsHover(true);
+        }}
+        onMouseOut={() => {
+          setIsHover(false);
         }}
       >
         {searchResults.length === 0 && searchValue ? (
@@ -69,9 +73,14 @@ const Header = () => {
             if (index < MAX_SEARCH_RESULT_ITEM) {
               return (
                 <li key={`${item.name}--${item.id}`}>
-                  <a href="#">
+                  <Link
+                    onClick={() => {
+                      setIsActive(false);
+                    }}
+                    to={`${ROUTE.PRODUCT}/${item.idProduct}`}
+                  >
                     <div className="thumbnail">
-                      <img src={item.img} />
+                      <img src={item.img} alt="img" />
                     </div>
                     <div className="text-content">
                       <h6>{item.name}</h6>
@@ -88,7 +97,7 @@ const Header = () => {
                         )}
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
               );
             }
@@ -99,7 +108,16 @@ const Header = () => {
                   style={{ borderBottom: "unset" }}
                 >
                   <span className="title">
-                    <a href="#">See all results ({searchResults.length - 10})</a>
+                    <div
+                      onClick={() => {
+                        searchParams.set("keyword", searchValue.trim().toLowerCase());
+                        setSearchParams(searchParams);
+                        setIsActive(false);
+                        navigate(ROUTE.PRODUCT);
+                      }}
+                    >
+                      See all results ({searchResults.length - 10})
+                    </div>
                   </span>
                 </li>
               );
@@ -120,9 +138,9 @@ const Header = () => {
       <section className="header__main">
         <div className="header__main--top">
           <div className="header--element logo">
-            <a href="#">
+            <Link to={ROUTE.HOME}>
               <img src={logo} alt="vegist"></img>
-            </a>
+            </Link>
           </div>
           <div className="header--element search">
             <form
@@ -131,6 +149,8 @@ const Header = () => {
                 e.preventDefault();
                 searchParams.set("keyword", searchValue.trim().toLowerCase());
                 setSearchParams(searchParams);
+                setIsActive(false);
+                navigate("/product");
               }}
             >
               <input
@@ -146,18 +166,14 @@ const Header = () => {
                   setIsActive(true);
                 }}
                 onBlur={() => {
-                  setIsActive(false);
+                  if (!isHover) {
+                    setIsActive(false);
+                  }
                 }}
                 placeholder="Search our store"
                 required
               />
-              <button
-                type="submit"
-                onClick={() => {
-                  searchParams.set("keyword", searchValue.trim().toLowerCase());
-                  setSearchParams(searchParams);
-                }}
-              >
+              <button type="submit">
                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
               </button>
             </form>
@@ -167,15 +183,15 @@ const Header = () => {
             <div className="acc">
               <AiOutlineUser />
               <div className="acc--container">
-                <a href={ROUTE.ACCOUNT}>Account</a>
+                <Link to={ROUTE.ACCOUNT}>Account</Link>
                 <div className="acc--lo">
-                  <a href={ROUTE.REGISTER}>Register</a>
-                  <a href={ROUTE.LOGIN}>Login</a>
+                  <Link to={ROUTE.REGISTER}>Register</Link>
+                  <Link to={ROUTE.LOGIN}>Login</Link>
                 </div>
               </div>
             </div>
             <div className="wishlist">
-              <a className="wishlist-icon" href="/home/wishlist">
+              <a className="wishlist-icon" href={ROUTE.WISHLIST}>
                 <HeartOutlined />
                 <span className="wishlist-counter">0</span>
               </a>
