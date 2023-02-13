@@ -80,7 +80,7 @@
   }
   .slider-image {
     position: relative;
-    .slider-text-info {
+    .slider__text--info {
       position: absolute;
       bottom: 50%;
       transform: translateY(50%);
@@ -109,17 +109,17 @@
       }
     }
 
-    .slider-text-left {
+    .slider__text--left {
       left: 10%;
       text-align: left;
     }
 
-    .slider-text-right {
+    .slider__text--right {
       right: 10%;
       text-align: right;
     }
 
-    .slider-text-center {
+    .slider__text--center {
       left: 10%;
       right: 10%;
       margin: 0 auto;
@@ -141,7 +141,7 @@
       padding-left: 15px;
       margin: 0 auto;
 
-      .section--slide {
+      .section-slide {
         padding-left: 19px;
         position: relative;
 
@@ -285,7 +285,7 @@
     max-width: 1200px;
     margin: 0 auto;
 
-    .section--slide {
+    .section-slide {
       overflow: hidden;
 
       .slick-track {
@@ -295,7 +295,7 @@
   }
 }
 
-.section--title {
+.section-title {
   text-align: center;
 
   h2 {

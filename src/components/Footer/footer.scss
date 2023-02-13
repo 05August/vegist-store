@@ -9,7 +9,7 @@ footer {
     padding: 80px 15px 0px 15px;
     margin: 0 auto;
     .ourService {
-      &--content {
+      &__content {
         width: 25%;
         @include flex(flex-end, center, row-reverse);
         &:hover {
@@ -86,12 +86,12 @@ footer {
       .contact {
         display: flex;
         align-items: center;
-        &--icon {
+        &__icon {
           margin-right: 15px;
           font-size: 40px;
           color: $primary-color;
         }
-        &--text {
+        &__text {
           h6 {
             font-size: 16px;
             font-weight: 600;
@@ -114,20 +114,20 @@ footer {
       padding-top: 30px;
       border-top: 1px solid #e8e8e8ee;
       .listItem {
-        &--title {
+        &__title {
           color: $primary-color;
           font-size: 16px;
           font-weight: 600;
         }
-        &--subList {
+        &__subList {
           padding-right: 30px;
-          &__li {
+          .subList__item {
             padding: 10px 0;
             border-bottom: 1px dashed #7b7b7bee;
             &:last-child {
               border-bottom: none;
             }
-            &:hover{
+            &:hover {
               color: $primary-color;
             }
           }
@@ -148,7 +148,7 @@ footer {
       width: 80%;
       display: flex;
       justify-content: space-between;
-      &--text {
+      &__text {
         color: $white;
         display: flex;
         align-items: center;
@@ -159,7 +159,7 @@ footer {
           margin: 0 3px;
         }
       }
-      &--social {
+      &__social {
         flex: 1;
         text-align: center;
         li {
@@ -182,7 +182,7 @@ footer {
           }
         }
       }
-      &--payment {
+      &__payment {
         flex: 1;
         text-align: right;
       }

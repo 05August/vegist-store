@@ -5,7 +5,7 @@ header {
   background-color: $white;
   width: 100%;
   &.is-sticky {
-    .header__top {
+    .header--top {
       display: none;
     }
     position: fixed;
@@ -48,7 +48,7 @@ header {
       padding: 15px 0;
       @include flex(space-between, center);
 
-      .header--element {
+      .header__element {
         flex: 1;
       }
 
@@ -176,7 +176,7 @@ header {
               color: $primary-color;
             }
           }
-          &--container {
+          &__container {
             & > a {
               display: block;
               font-size: 13px;
@@ -185,7 +185,7 @@ header {
               text-transform: uppercase;
               color: $primary-color;
             }
-            .acc--lo {
+            .acc__lo {
               a {
                 font-size: 11px;
                 color: $black;

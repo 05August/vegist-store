@@ -2,12 +2,14 @@ import { Routes, Route, Link, useSearchParams } from "react-router-dom";
 import { ROUTE } from "./constants/Constants";
 import DefaultLayout from "./layouts/DefaultLayout";
 import HomeBody from "./pages/User/Home/Home.jsx";
+import ScrollToTop from "./until/scrollToTop";
 import { Empty } from "antd";
 import "./styles/style.scss";
 function App() {
   const [searchParams] = useSearchParams();
   return (
     <div className="App">
+      <ScrollToTop />
       <Routes>
         <Route
           path={ROUTE.NOT_FOUND}

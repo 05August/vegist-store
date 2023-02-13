@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { MAX_SEARCH_RESULT_ITEM } from "../../constants/Constants";
 import { convertPriceToVnd } from "../../until/convertPrice.js";
+import { getProductsDetail } from "../../redux/productsDetail.slice";
 import { ROUTE } from "../../constants/Constants";
 import "../Header/header.scss";
 
 const Search = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -17,6 +19,10 @@ const Search = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    dispatch(getProductsDetail());
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const listProduct = useSelector((state) => {
     return state.productsDetail.data;
   });
@@ -103,7 +109,7 @@ const Search = () => {
   };
 
   return (
-    <div className="header--element search">
+    <div className="header__element search">
       <form
         action="/search"
         onSubmit={(e) => {

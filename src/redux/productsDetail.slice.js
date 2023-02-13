@@ -4,7 +4,6 @@ import clientServer from "../server/clientServer";
 export const getProductsDetail = createAsyncThunk("getProductsDetail", async () => {
   try {
     const getResponse = await clientServer.get("productDetail");
-
     return getResponse.data;
   } catch (error) {
     return error;

@@ -11,21 +11,29 @@ const discount = (newPrice, oldPrice) => {
 const ProductItem = ({ data }) => {
   return data ? (
     <>
-      <div className="product--item__img">
-        <Link className="product--img" to={`${ROUTE.PRODUCT}/${data.productId}`}>
-          <img className="img--fruit img--before" src={data.img[0]} alt="Ảnh trái cây" />
-          <img className="img--fruit img--after" src={data.img[1]} alt="Ảnh trái cây" />
+      <div className="product__item--img">
+        <Link className="product__img" to={`${ROUTE.PRODUCT}/${data.productId}`}>
+          <img
+            className="product__img--fruit img-before"
+            src={data.img[0]}
+            alt="Ảnh trái cây"
+          />
+          <img
+            className="product__img--fruit img-after"
+            src={data.img[1]}
+            alt="Ảnh trái cây"
+          />
         </Link>
         {data.oldPrice ? (
-          <div className="product--discount">
+          <div className="product__discount">
             -{discount(data.newPrice, data.oldPrice)}%
           </div>
         ) : (
           <></>
         )}
-        <div className="product--action"></div>
+        <div className="product__action"></div>
       </div>
-      <div className="product--item__content">
+      <div className="product__item--content">
         <Link to={`${ROUTE.PRODUCT}/${data.productId}`} className="product-title">
           {data.name}
         </Link>

@@ -1,27 +1,26 @@
 @import "../../styles/utilities/variables.scss";
 @import "../../styles/utilities/mixin.scss";
-.product--item {
+.product__item {
   padding: 0 15px;
-
-  &__img {
+  &--img {
     position: relative;
     &:hover {
-      .img--after {
+      .img-after {
         opacity: 1 !important;
       }
     }
-    .product--img {
-      .img--fruit {
+    .product__img {
+      &--fruit {
         height: 340px;
         width: 300px;
         @include transition-ease-in-out(0.4s);
       }
 
-      .img--before {
+      .img-before {
         backface-visibility: hidden;
       }
 
-      .img--after {
+      .img-after {
         backface-visibility: hidden;
         opacity: 0;
         position: absolute;
@@ -30,7 +29,7 @@
       }
     }
 
-    .product--discount {
+    .product__discount {
       position: absolute;
       top: 5px;
       right: 5px;
@@ -42,7 +41,7 @@
     }
   }
 
-  &__content {
+  &--content {
     margin-top: 30px;
 
     a {

@@ -1,5 +1,5 @@
 import React from "react";
-import { HiOutlineChevronDown, HiChevronRight } from "react-icons/hi";
+import { HiOutlineChevronDown } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../../constants/Constants";
 import { NAVBAR_DATA } from "../../../constants/Constants";

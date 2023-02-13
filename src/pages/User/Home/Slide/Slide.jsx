@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
-import clientServer from "../../../../server/clientServer";
 import { ROUTE } from "../../../../constants/Constants";
 import { Carousel, Row, Col } from "antd";
 import {
@@ -49,7 +48,7 @@ const renderSlideShow = (isActive, data) => {
               <Link to={ROUTE.PRODUCT}>
                 <img src={item.img} alt="img" />
               </Link>
-              <div className={`slider-text-info slider-text-${item.position}`}>
+              <div className={`slider__text--info slider__text--${item.position}`}>
                 <span>{item.thumbnail}</span>
 
                 <h1>
@@ -119,7 +118,7 @@ const renderSlideProduct = (dataProductsTrending, sliderProductRef) => {
       <Slider {...settings} ref={sliderProductRef}>
         {dataProductsTrending.map((item) => {
           return (
-            <div className="product--item" key={`${item.id}--${item.idCategory}`}>
+            <div className="product__item" key={`${item.id}--${item.idCategory}`}>
               <ProductItem data={item} />
             </div>
           );
@@ -144,10 +143,10 @@ const Slide = ({ type, data }) => {
         <>
           <div className="category">
             <div className="container">
-              <div className="section--title">
+              <div className="section-title">
                 <h2>Shop by category</h2>
               </div>
-              <div className="section--slide">
+              <div className="section-slide">
                 {buttonArrow("prev", () => {
                   sliderRef.current.slickPrev();
                 })}
@@ -163,10 +162,10 @@ const Slide = ({ type, data }) => {
     case "slide-product-trending":
       return (
         <div className="container">
-          <div className="section--title">
+          <div className="section-title">
             <h2>Trending Products</h2>
           </div>
-          <div className="section--slide">
+          <div className="section-slide">
             {renderSlideProduct(data, sliderProductRef)}
           </div>
         </div>

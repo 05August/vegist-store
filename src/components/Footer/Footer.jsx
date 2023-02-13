@@ -58,14 +58,11 @@ const Footer = () => {
     return dataList.map((element) => {
       return (
         <Col key={element.id} span={6} className="listItem">
-          <h2 className="listItem--title">{element.title}</h2>
-          <ul className="listItem--subList">
+          <h2 className="listItem__title">{element.title}</h2>
+          <ul className="listItem__subList">
             {element.list.map((elementItem) => {
               return (
-                <li
-                  key={`${element.id}-${elementItem}`}
-                  className="listItem--subList__li"
-                >
+                <li key={`${element.id}-${elementItem}`} className="subList__item">
                   <a href={`/home/${elementItem.toLocaleLowerCase()}`}>{elementItem}</a>
                 </li>
               );
@@ -80,25 +77,25 @@ const Footer = () => {
     <footer>
       <div className="containerFooter">
         <Row className="ourService">
-          <Col className="ourService--content" span={6}>
+          <Col className="ourService__content" span={6}>
             <span>Free delivery</span>
             <a href="">
               <FaTruck />
             </a>
           </Col>
-          <Col className="ourService--content" span={6}>
-            <span>Free delivery</span>
+          <Col className="ourService__content" span={6}>
+            <span>Cash on delivery</span>
             <a href="">
               <FaMoneyBillAlt />
             </a>
           </Col>
-          <Col className="ourService--content" span={6}>
+          <Col className="ourService__content" span={6}>
             <span>30 days returns</span>
             <a href="">
               <HiRefresh />
             </a>
           </Col>
-          <Col className="ourService--content" span={6}>
+          <Col className="ourService__content" span={6}>
             <span>Online support</span>
             <a href="">
               <FaHeadphones />
@@ -108,7 +105,7 @@ const Footer = () => {
         <Row className="infor">
           <Col className="logo" span={8}>
             <a href="/">
-              <img src={logo} style={{ width: "105px" }} loading="lazy" />
+              <img src={logo} style={{ width: "105px" }} loading="lazy" alt="" />
             </a>
             <p>
               Lorem ipsum iasds simply dummy text of the printing and typesetting
@@ -117,20 +114,20 @@ const Footer = () => {
             </p>
           </Col>
           <Col className="address" span={8}>
-            <div className="address--icon">
+            <div className="address__icon">
               <IoLocationSharp />
             </div>
-            <div className="address--text">
+            <div className="address__text">
               <h6>Address</h6>
               <span>38 block street arean licard</span>
               <span>hamonia road sydney, australia</span>
             </div>
           </Col>
           <Col className="contact" span={8}>
-            <div className="contact--icon">
+            <div className="contact__icon">
               <IoCallSharp />
             </div>
-            <div className="contact--text">
+            <div className="contact__text">
               <h6>Get in touch</h6>
               <a href="tel:(+84) 1234 5678 90">(+84) 1234 5678 90</a>
               <a href="mailto:support@demo.com">support@demo.com</a>
@@ -141,12 +138,12 @@ const Footer = () => {
       </div>
       <div className="containerCopyright">
         <footer className="copyright">
-          <p className="copyright--text">
+          <p className="copyright__text">
             <span>Copyright </span>
             <FaRegCopyright />
             <span> 2022 spacingtech all rights reserved</span>
           </p>
-          <ul className="copyright--social">
+          <ul className="copyright__social">
             <li>
               <a href="https://www.whatsapp.com">
                 <FaWhatsapp />
@@ -183,7 +180,7 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-          <div className="copyright--payment">
+          <div className="copyright__payment">
             <a>
               <svg
                 viewBox="0 0 38 24"
@@ -317,7 +314,7 @@ const Footer = () => {
             </a>
           </div>
         </footer>
-        <a
+        <div
           onClick={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
@@ -325,7 +322,7 @@ const Footer = () => {
           style={{ display: offset > 50 ? "flex" : "none" }}
         >
           <HiOutlineChevronDoubleUp />
-        </a>
+        </div>
       </div>
     </footer>
   );

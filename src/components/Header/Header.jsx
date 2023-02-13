@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar/Navbar";
 import Search from "../../components/Search/Search";
 import logo from "../../assets/img/logo.png";
@@ -9,18 +8,15 @@ import { IoIosClose } from "react-icons/io";
 import { MdOutlineHeadsetMic } from "react-icons/md";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
-import { getProductsDetail } from "../../redux/productsDetail.slice";
 import { ROUTE } from "../../constants/Constants";
 import "./header.scss";
 
 const Header = () => {
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [offset, setOffset] = useState(0);
   const [searchKey, setSearchKey] = useState(0);
 
   useEffect(() => {
-    dispatch(getProductsDetail());
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -45,7 +41,7 @@ const Header = () => {
       </section>
       <section className="header__main">
         <div className="header__main--top">
-          <div className="header--element logo">
+          <div className="header__element logo">
             <Link
               onClick={() => {
                 setSearchKey(searchKey + 1);
@@ -57,30 +53,30 @@ const Header = () => {
           </div>
 
           <Search key={searchKey} />
-          <div className="header--element shop-element">
+          <div className="header__element shop-element">
             <div className="acc">
               <AiOutlineUser />
-              <div className="acc--container">
+              <div className="acc__container">
                 <Link to={ROUTE.ACCOUNT}>Account</Link>
-                <div className="acc--lo">
+                <div className="acc__lo">
                   <Link to={ROUTE.REGISTER}>Register</Link>
                   <Link to={ROUTE.LOGIN}>Login</Link>
                 </div>
               </div>
             </div>
             <div className="wishlist">
-              <a className="wishlist-icon" href={ROUTE.WISHLIST}>
+              <Link className="wishlist-icon" to={ROUTE.WISHLIST}>
                 <HeartOutlined />
                 <span className="wishlist-counter">0</span>
-              </a>
+              </Link>
             </div>
             <div className="cart">
-              <a className="cart-icon" onClick={showCart}>
+              <Link className="cart-icon" onClick={showCart}>
                 <ShoppingOutlined />
                 <span id="cart-total" className="bigcounter">
                   0
                 </span>
-              </a>
+              </Link>
               <Drawer
                 placement="right"
                 onClose={onClose}
